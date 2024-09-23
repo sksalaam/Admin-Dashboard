@@ -97,7 +97,7 @@ const AdminSlice = createSlice({
             })
             .addCase(fetchEmployees.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.employee = action.payload; // Populate employee data
+                state.employee = action.payload; 
             })
             .addCase(fetchEmployees.rejected, (state) => {
                 state.isLoading = false;

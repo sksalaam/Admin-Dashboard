@@ -35,7 +35,6 @@ const register = async (req, res) => {
 };
 
 //LOGIN
-
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -91,7 +90,7 @@ const logout = (req, res) => {
   res.clearCookie("token").json({
     success: true,
     message: "Logged out successfully",
-  });
+  })
 };
 
 //AUTH MIDDLEWARE
