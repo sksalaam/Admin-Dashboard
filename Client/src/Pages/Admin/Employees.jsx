@@ -14,6 +14,9 @@ const EmployeeTable = () => {
     useEffect(() => {
         dispatch(fetchEmployees());
     }, [dispatch]);
+    const handleEmployeeChange=()=>{
+      dispatch(fetchEmployees())
+    }
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
@@ -38,7 +41,7 @@ const EmployeeTable = () => {
                 <div className="flex items-center gap-2">
                     <input
                         type="text"
-                        placeholder="Search employees..."
+                        placeholder="Search employees by name"
                         value={searchTerm}
                         onChange={handleSearch}
                         className="border border-gray-300 p-2 rounded"
@@ -69,7 +72,7 @@ const EmployeeTable = () => {
                     >
                         Close Form
                     </button>
-                    <EmployeeForm employee={editingEmployee} setShowForm={setShowForm} />
+                    <EmployeeForm employee={editingEmployee} setShowForm={setShowForm} onEmployeeAdded={handleEmployeeChange}/>
                 </div>
             )}
 

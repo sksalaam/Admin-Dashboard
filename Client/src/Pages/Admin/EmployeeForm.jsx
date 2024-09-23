@@ -14,7 +14,7 @@ const initialForm = {
   image: null,
 };
 
-const EmployeeForm = ({ setShowForm, employee }) => {
+const EmployeeForm = ({ setShowForm, employee, onEmployeeAdded}) => {
   const [formData, setFormData] = useState(initialForm);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -73,6 +73,7 @@ const EmployeeForm = ({ setShowForm, employee }) => {
       dispatch(editEmployee({ id: employee._id, data: formData })).then((data) => {
           if (data?.payload?.success) {
               toast({ title: "Employee updated successfully!" });
+              onEmployeeAdded();
               setShowForm(false);
           } else {
               toast({
@@ -86,6 +87,7 @@ const EmployeeForm = ({ setShowForm, employee }) => {
     dispatch(addEmployee(formData)).then((data) => {
       if (data?.payload?.success) {
         toast({ title: "Employee added successfully!" });
+        onEmployeeAdded();
         setFormData(initialForm);
         setShowForm(false); 
       } else {
